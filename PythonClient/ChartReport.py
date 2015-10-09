@@ -1,5 +1,9 @@
 #!python
-# by courtesy of HuangYi @ 20110424
+"""
+Based on file authored by HuangYi @ 20110424
+Author: Massoud Maher
+Purpose: Defines client fetching data from DAVIDWebService
+"""
 
 def DAVIDenrich(listF, idType, bgF='', resF='', bgName = 'Background1',listName='List1', category = '', thd=0.1, ct=2):
     from suds.client import Client

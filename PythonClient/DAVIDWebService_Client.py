@@ -31,7 +31,7 @@ client.wsdl.services[0].setlocation('https://david.ncifcrf.gov/webservice/servic
 #
 # print the service (introspection)
 #
-print client
+#print client
 
 #authenticate user email 
 print client.service.authenticate('mamaher@ucsd.edu')
