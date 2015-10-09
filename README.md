@@ -1,2 +1,3 @@
-# cwc
-Communicating with computers
+# Communicating with computers
+Beginnings of an AI project for biology researchers
+
