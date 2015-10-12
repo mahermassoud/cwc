@@ -1,3 +1,3 @@
 # Communicating with computers
-Beginnings of an AI project for biology researchers
+An AI project for biology researchers
 
