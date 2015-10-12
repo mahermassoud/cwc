@@ -16,15 +16,11 @@ from suds.client import Client
 from suds import *
 from tests import *
 from datetime import datetime
-
+import traceback as tb
+import suds.metrics as metrics
 
 ID_TYPE = 'OFFICIAL_GENE_SYMBOL'
 
-def main():
-	inputIds = get_input_ids()
-	client = initialize()
-	client.service.addList(inputIds, ID_TYPE, 'input_list', 0)
-	print client.service.getSummaryReport()	
 
 
 """
@@ -55,5 +51,12 @@ def initialize():
 	client.service.authenticate('mamaher@ucsd.edu')
 	return client
 
+# Drier code
+inputIds = get_input_ids()
+client = initialize()
 
-main()
+out_file = open('driver_out.txt', 'w')
+
+client.service.addList(inputIds, ID_TYPE, 'input_list', 0)
+out_file.write("test")
+out_file.write(client.service.getListReport())
