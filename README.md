@@ -1,3 +1,2 @@
 # Communicating with computers
-An AI project for biology researchers
-
+### A DARPA funded project for engaging in natural dialoge with biology researchers

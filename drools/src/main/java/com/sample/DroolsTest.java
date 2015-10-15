@@ -4,8 +4,13 @@ import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
+import org.slf4j.impl.StaticLoggerBinder;
+
 /**
- * This is a sample class to launch a rule.
+ * This class is to demonstrate the launching of rules based on some input and interfacing with agents.
+ * 
+ * @author Massoud Maher
+ * @version 0.1
  */
 public class DroolsTest {
 
