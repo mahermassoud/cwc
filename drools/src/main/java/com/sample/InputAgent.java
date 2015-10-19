@@ -29,6 +29,7 @@ public class InputAgent {
 	public InputAgent(String fileName) {
 		try {
 			File filePath = new File( this.getClass().getResource(fileName).toURI());
+			System.err.println(filePath.toString() + ": FILEPATH");
 			reader = new BufferedReader( new FileReader(filePath) );
 		}
 		catch (FileNotFoundException fileException) {
