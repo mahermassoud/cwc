@@ -2,3 +2,5 @@
 /rules/
 /.DS_Store
 /logack.xml
+/.ipynb_checkpoints/
+/gene_list.txt

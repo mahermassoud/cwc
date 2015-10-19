@@ -4,8 +4,6 @@ import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
-import org.slf4j.impl.StaticLoggerBinder;
-
 /**
  * This class is to demonstrate the launching of rules based on some input and interfacing with agents.
  * 
@@ -13,6 +11,7 @@ import org.slf4j.impl.StaticLoggerBinder;
  * @version 0.1
  */
 public class DroolsTest {
+	
 
     public static final void main(String[] args) {
         try {
@@ -37,8 +36,11 @@ public class DroolsTest {
         catch (Throwable t) {
             t.printStackTrace();
         }
+        
+        InputAgent input = new InputAgent("gene_list.txt");
+        System.out.print(input.getArray().toString());
     }
-
+    
     public static class Message {
 
         public static final int HELLO = 0;
