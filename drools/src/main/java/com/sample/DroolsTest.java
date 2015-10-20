@@ -14,7 +14,8 @@ public class DroolsTest {
 	
 
     public static final void main(String[] args) {
-        try {
+        /*
+    	try {
             // load up the knowledge base
 	        KieServices ks = KieServices.Factory.get();
     	    KieContainer kContainer = ks.getKieClasspathContainer();
@@ -36,6 +37,7 @@ public class DroolsTest {
         catch (Throwable t) {
             t.printStackTrace();
         }
+        */
         
         GeneListInputAgent input = new GeneListInputAgent("gene_list.txt");
         System.out.print(input.getArray().toString());

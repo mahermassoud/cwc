@@ -4,6 +4,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,6 +22,9 @@ public class GeneListInputAgent {
 	private BufferedReader reader = null;
 	// Array of each line in file
 	private ArrayList<String> fileLines;
+	
+	public static final List<String> GENE_EPIDERMAL_GROWTH_FACTOR_RECEPTOR = 
+			Arrays.asList("NM_005228", "NM_201284", "NM_201282", "NM_201283");
 	
 	/**
 	 * Creates an GeneListInputAgent for reading in a text file.
