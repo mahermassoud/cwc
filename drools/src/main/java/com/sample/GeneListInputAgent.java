@@ -15,18 +15,18 @@ import java.io.FileNotFoundException;
  * @author Massoud Maher
  * @version 0.1
  */
-public class InputAgent {
+public class GeneListInputAgent {
 	
-	BufferedReader reader = null;
+	private BufferedReader reader = null;
 	// Array of each line in file
-	ArrayList<String> fileLines;
+	private ArrayList<String> fileLines;
 	
 	/**
-	 * Creates an InputAgent for reading in a text file.
+	 * Creates an GeneListInputAgent for reading in a text file.
 	 * 
 	 * @param fileName Filename of file wanted to be read in
 	 */
-	public InputAgent(String fileName) {
+	public GeneListInputAgent(String fileName) {
 		try {
 			File filePath = new File( this.getClass().getResource(fileName).toURI());
 			System.err.println(filePath.toString() + ": FILEPATH");

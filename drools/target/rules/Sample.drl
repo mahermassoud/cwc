@@ -1,4 +1,39 @@
 package com.sample
  
 import com.sample.DroolsTest.Message;
+import java.util.ArrayList;
+
+/**
+* Determines if a input list of Genes is relevant to another gene set. Uses threshold of .8 matching
+*
+* @param input Input list that is being checked for relevance
+* @param desired List that is being checked against for relevance
+* @return boolean whether input is relevant or not
+*/
+function boolean inputIsRelevant(GeneListInputAgent input, ArrayList<String> desired) {
+	ArrayList<String> gene_set = input.getArray();
+	
+	// Count number of matches
+	int match_count = 0;
+	for(String gene : gene_set) {
+		if(desired.contains(gene) {
+			match_count++;
+		}
+	}	
+
+	// Check match proportion
+	double match_proportion = match_count / desired.size();
+	if(match_proportion >= .80) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
  
+rule "genes_epidermal_growth_factor_receptor"
+	when
+		GeneListInputAgent()
+	then
+		System.out.println("Gene set exists!")
+end

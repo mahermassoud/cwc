@@ -37,7 +37,7 @@ public class DroolsTest {
             t.printStackTrace();
         }
         
-        InputAgent input = new InputAgent("gene_list.txt");
+        GeneListInputAgent input = new GeneListInputAgent("gene_list.txt");
         System.out.print(input.getArray().toString());
     }
     
