@@ -1,30 +1,34 @@
 package com.sample
  
-import com.sample.DroolsTest.Message;
 import java.util.ArrayList;
 import java.util.List;
+import com.sample.GeneListInputAgent;
 
 /**
-* Determines if a input list of Genes is relevant to another gene set. Uses threshold of .8 matching
+* Determines if a input list of Genes is relevant to another gene set. Uses threshold of .7 matching. Prints out each match
 *
 * @param input Input list that is being checked for relevance
 * @param desired List that is being checked against for relevance
+* @param ruleName name of rule that we are in, for output purposes
 * @return boolean whether input is relevant or not
 */
 function boolean inputIsRelevant(GeneListInputAgent input, List desired) {
 	ArrayList<String> gene_set = input.getArray();
 	
+	System.out.println("Comparing input " + input.getFileName() + "...");
 	// Count number of matches
 	int match_count = 0;
 	for(String gene : gene_set) {
 		if(desired.contains(gene)) {
 			match_count++;
+			System.out.println(gene + " is a match!");
 		} 	
 	}
 
 	// Check match proportion
-	double match_proportion = match_count / desired.size();
-	if(match_proportion >= .80) {
+	double matchProportion = (double)match_count / (double)desired.size();
+	System.out.println(input.getFileName() + " has " + matchProportion + " match proportion\n");
+	if(matchProportion >= .70) {
 		return true;
 	}
 	else {
@@ -35,7 +39,9 @@ function boolean inputIsRelevant(GeneListInputAgent input, List desired) {
 rule "genes_epidermal_growth_factor_receptor"
 	when
 		geneInput : GeneListInputAgent()
-		eval ( inputIsRelevant(geneInput, GeneListInputAgent.GENE_EPIDERMAL_GROWTH_FACTOR_RECEPTOR) )
+		eval( inputIsRelevant(geneInput, GeneListInputAgent.GENE_EPIDERMAL_GROWTH_FACTOR_RECEPTOR) )
 	then
-		System.out.println("Gene set exists!");
+		System.out.println("Input " + geneInput.getFileName() + " is relevant to epidermal growth factor receptor!");
 end
+
+
