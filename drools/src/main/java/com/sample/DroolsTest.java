@@ -22,8 +22,13 @@ public class DroolsTest {
         	KieSession kSession = kContainer.newKieSession("ksession-rules");
 
             // Read in input list and check for relevance
-        	GeneListInputAgent test_input = new GeneListInputAgent("epidermal_test.txt");
-        	kSession.insert(test_input);
+        	GeneListInputAgent epidermal_input = new GeneListInputAgent("epidermal_test.txt");
+        	GeneListInputAgent myocyte_input = new GeneListInputAgent("myocyte_enhancer_2c_test.txt");
+        	GeneListInputAgent calmodulin_input = new GeneListInputAgent("calmodulin_1_test.txt");
+
+        	kSession.insert(epidermal_input);
+        	kSession.insert(myocyte_input);
+        	kSession.insert(calmodulin_input);
         	
             kSession.fireAllRules();
         } 
