@@ -21,7 +21,7 @@ public class DroolsTest {
     	    KieContainer kContainer = ks.getKieClasspathContainer();
         	KieSession kSession = kContainer.newKieSession("ksession-rules");
 
-            // Read in input list and check for relevance
+            // Read in input list and check for relevance -- store input files into drools/target/com/sample
         	GeneListInputAgent epidermal_input = new GeneListInputAgent("epidermal_test.txt");
         	GeneListInputAgent myocyte_input = new GeneListInputAgent("myocyte_enhancer_2c_test.txt");
         	GeneListInputAgent calmodulin_input = new GeneListInputAgent("calmodulin_1_test.txt");
@@ -36,8 +36,8 @@ public class DroolsTest {
             t.printStackTrace();
         }
         
-        GeneListInputAgent input = new GeneListInputAgent("gene_list.txt");
-        System.out.print(input.getArray().toString());
+        //GeneListInputAgent input = new GeneListInputAgent("gene_list.txt");
+        //System.out.print(input.getArray().toString());
     }
    
     /*
