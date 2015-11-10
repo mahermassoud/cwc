@@ -1,5 +1,7 @@
 package com.sample;
 
+import java.util.HashSet;
+
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
@@ -14,7 +16,12 @@ import org.kie.api.runtime.rule.AgendaGroup;
  */
 public class DroolsTest {
 	
-
+	public enum GeneGroup {
+		EPIDERMAL, MYOCYTE_ENHANCER, CALMODULIN_1
+	}
+	
+	public HashSet<GeneGroup> relevantGenes = new HashSet<GeneGroup>();
+	
     public static final void main(String[] args) {
 
     	try {
@@ -41,6 +48,8 @@ public class DroolsTest {
         	kSession.insert(myocyte_input);
         	System.out.println("************************************************************************************************************************************");
         	System.out.println("___________________________Firing rules with epidermal and myocyte___________________________");
+
+        	geneCollectionAgenda.setFocus();
             kSession.fireAllRules();
 
         	kSession.insert(calmodulin_input);
