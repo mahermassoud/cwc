@@ -15,7 +15,6 @@
     </dependency>
 	-->
 
-	<!--
 	<dependencies>
 
 		<dependency>
@@ -31,7 +30,6 @@
         </dependency>
 
 	</dependencies>
-	-->
 
 
 </project>
