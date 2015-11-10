@@ -21,13 +21,13 @@ function boolean inputIsRelevant(GeneListInputAgent input, List desired) {
 	for(String gene : gene_set) {
 		if(desired.contains(gene)) {
 			match_count++;
-			System.out.println(gene + " is a match!");
+			//System.out.println(gene + " is a match!");
 		} 	
 	}
 
 	// Check match proportion
 	double matchProportion = (double)match_count / (double)desired.size();
-	System.out.println(input.getFileName() + " has " + matchProportion + " match proportion\n");
+	//System.out.println(input.getFileName() + " has " + matchProportion + " match proportion\n");
 	if(matchProportion >= .70) {
 		return true;
 	}
@@ -37,38 +37,36 @@ function boolean inputIsRelevant(GeneListInputAgent input, List desired) {
 }
  
 rule "genes_epidermal_growth_factor_receptor"
-	no-loop true
+	agenda-group "Gene collection"
 	when
 		geneInput : GeneListInputAgent()
 		eval( inputIsRelevant(geneInput, GeneListInputAgent.GENE_EPIDERMAL_GROWTH_FACTOR_RECEPTOR) )
 	then
-		System.out.println("Input " + geneInput.getFileName() + " is relevant to epidermal growth factor receptor!");
-		System.out.println("11111111111111111111111111111111111111111111111111111111111111111111111111111111");
+		System.out.println("!!!!!!!!!! Input " + geneInput.getFileName() + " is relevant to epidermal growth factor receptor!!!!!!!!!!!!!");
 end
 
 
 rule "genes_myocyte_enhancer_2c"
-	no-loop true
+	agenda-group "Gene collection"
 	when
 		geneInput : GeneListInputAgent()
 		eval( inputIsRelevant(geneInput, GeneListInputAgent.GENE_MYOCYTE_ENHANCER_2C) )
 	then
-		System.out.println("Input " + geneInput.getFileName() + " is relevant to myocyte enhancer 2c");
-		System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222");
+		System.out.println("!!!!!!!! Input " + geneInput.getFileName() + " is relevant to myocyte enhancer 2c!!!!!!!!!!");
 end
 
 
 rule "genes_calmodulin_1"
-	no-loop true
+	agenda-group "Gene collection"
 	when
 		geneInput : GeneListInputAgent()
 		eval( inputIsRelevant(geneInput, GeneListInputAgent.GENE_CALMODULIN_1) )
 	then
 		System.out.println("!!!!!! Input " + geneInput.getFileName() + " is relevant to calmodulin 1 !!!!!!");
-		System.out.println("33333333333333333333333333333333333333333333333333333333333333333333333333333333");
 end
 
 rule "Pathway: Angiotensin II mediated activation of JNK Pathway via Pyk2 dependent signaling"
+	agenda-group "Pathway discovery" 
 	when
 		epidermalGrowthFactorGeneInput : GeneListInputAgent();
 		myocyteEnhancer2CGeneInput : GeneListInputAgent();
