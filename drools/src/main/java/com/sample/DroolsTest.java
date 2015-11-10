@@ -27,9 +27,17 @@ public class DroolsTest {
         	GeneListInputAgent calmodulin_input = new GeneListInputAgent("calmodulin_1_test.txt");
 
         	kSession.insert(epidermal_input);
+        	System.out.println("___________________________Firing rules with epidermal___________________________");
+            kSession.fireAllRules();
+
         	kSession.insert(myocyte_input);
+        	System.out.println("************************************************************************************************************************************");
+        	System.out.println("___________________________Firing rules with epidermal and myocyte___________________________");
+            kSession.fireAllRules();
+
         	kSession.insert(calmodulin_input);
-        	
+        	System.out.println("************************************************************************************************************************************");
+        	System.out.println("___________________________Firing rules with epidermal and myocyte and calmodulin___________________________");
             kSession.fireAllRules();
         } 
         catch (Throwable t) {
