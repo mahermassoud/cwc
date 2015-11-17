@@ -3,6 +3,8 @@ package rules;
 import java.util.ArrayList;
 import java.util.List;
 import com.sample.GeneListInputAgent;
+import com.sample.Common.GeneGroupType;
+import com.sample.GeneGroup;
 
 /**
 * Determines if a input list of Genes is relevant to another gene set. Uses threshold of .7 matching. Prints out each match
@@ -38,35 +40,51 @@ function boolean inputIsRelevant(GeneListInputAgent input, List desired) {
  
 rule "genes_epidermal_growth_factor_receptor"
 	agenda-group "Gene collection"
+	no-loop true
 	when
 		geneInput : GeneListInputAgent()
+		geneGroup : GeneGroup();
 		eval( inputIsRelevant(geneInput, GeneListInputAgent.GENE_EPIDERMAL_GROWTH_FACTOR_RECEPTOR) )
 	then
+		modify(geneGroup) {
+			addGeneGroup(GeneGroupType.EPIDERMAL);	
+		}
 		System.out.println("!!!!!!!!!! Input " + geneInput.getFileName() + " is relevant to epidermal growth factor receptor!!!!!!!!!!!!!");
 end
 
 
 rule "genes_myocyte_enhancer_2c"
 	agenda-group "Gene collection"
+	no-loop true
 	when
 		geneInput : GeneListInputAgent()
+		geneGroup : GeneGroup();
 		eval( inputIsRelevant(geneInput, GeneListInputAgent.GENE_MYOCYTE_ENHANCER_2C) )
 	then
+		modify(geneGroup) {
+			addGeneGroup(GeneGroupType.MYOCYTE_ENHANCER);	
+		}
 		System.out.println("!!!!!!!! Input " + geneInput.getFileName() + " is relevant to myocyte enhancer 2c!!!!!!!!!!");
 end
 
 
 rule "genes_calmodulin_1"
 	agenda-group "Gene collection"
+	no-loop true
 	when
-		geneInput : GeneListInputAgent()
-		eval( inputIsRelevant(geneInput, GeneListInputAgent.GENE_CALMODULIN_1) )
+		geneGroup : GeneGroup();
+		geneInput : GeneListInputAgent();
+		eval( inputIsRelevant(geneInput, GeneListInputAgent.GENE_CALMODULIN_1) );
 	then
+		modify(geneGroup) {
+			addGeneGroup(GeneGroupType.CALMODULIN_1);	
+		}
 		System.out.println("!!!!!! Input " + geneInput.getFileName() + " is relevant to calmodulin 1 !!!!!!");
 end
 
 rule "Pathway: Angiotensin II mediated activation of JNK Pathway via Pyk2 dependent signaling"
 	agenda-group "Pathway discovery" 
+	no-loop true
 	when
 		epidermalGrowthFactorGeneInput : GeneListInputAgent();
 		myocyteEnhancer2CGeneInput : GeneListInputAgent();

@@ -14,13 +14,11 @@ import org.kie.api.runtime.rule.AgendaGroup;
  * @author Massoud Maher
  * @version 0.1
  */
-public class DroolsTest {
+public class DroolsTest implements Common {
 	
-	public enum GeneGroup {
-		EPIDERMAL, MYOCYTE_ENHANCER, CALMODULIN_1
-	}
+	//public HashSet<GeneGroup> relevantGenes = new HashSet<GeneGroup>();
 	
-	public HashSet<GeneGroup> relevantGenes = new HashSet<GeneGroup>();
+	public static GeneGroup relevantGenes = new GeneGroup();
 	
     public static final void main(String[] args) {
 
@@ -30,6 +28,7 @@ public class DroolsTest {
     	    KieContainer kContainer = ks.getKieClasspathContainer();
         	KieSession kSession = kContainer.newKieSession("ksession-rules");
         	Agenda agenda = kSession.getAgenda();
+        	kSession.insert(relevantGenes);
 
             // Read in input list and check for relevance -- store input files into drools/target/com/sample
         	GeneListInputAgent epidermal_input = new GeneListInputAgent("epidermal_test.txt");
