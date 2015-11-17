@@ -1,5 +1,6 @@
 package com.sample;
 
+import java.util.Collection;
 import java.util.HashSet;
 
 import org.kie.api.KieServices;
@@ -16,10 +17,6 @@ import org.kie.api.runtime.rule.AgendaGroup;
  */
 public class DroolsTest implements Common {
 	
-	//public HashSet<GeneGroup> relevantGenes = new HashSet<GeneGroup>();
-	
-	public static GeneGroup relevantGenes = new GeneGroup();
-	
     public static final void main(String[] args) {
 
     	try {
@@ -28,7 +25,6 @@ public class DroolsTest implements Common {
     	    KieContainer kContainer = ks.getKieClasspathContainer();
         	KieSession kSession = kContainer.newKieSession("ksession-rules");
         	Agenda agenda = kSession.getAgenda();
-        	kSession.insert(relevantGenes);
 
             // Read in input list and check for relevance -- store input files into drools/target/com/sample
         	GeneListInputAgent epidermal_input = new GeneListInputAgent("epidermal_test.txt");
@@ -43,12 +39,15 @@ public class DroolsTest implements Common {
         	kSession.insert(epidermal_input);
         	System.out.println("___________________________Firing rules with epidermal___________________________");
             kSession.fireAllRules();
+            kSession.fireAllRules();
+            kSession.fireAllRules();
 
         	kSession.insert(myocyte_input);
         	System.out.println("************************************************************************************************************************************");
         	System.out.println("___________________________Firing rules with epidermal and myocyte___________________________");
 
         	geneCollectionAgenda.setFocus();
+            kSession.fireAllRules();
             kSession.fireAllRules();
 
         	kSession.insert(calmodulin_input);
@@ -68,5 +67,27 @@ public class DroolsTest implements Common {
         }
         
     }
+    
+    /**
+     * Helper method to print all facts/objects in KieSession
+     * 
+     * @param KieSession session whose objects are being printed
+     */
+    private static void printAllFacts(KieSession session) {
+    	Collection<? extends Object> facts = session.getObjects();
+    
+    	System.out.println("___________Facts in session:___________");
+    	for(Object fact: facts) {
+    		System.out.println(fact.toString());
+    	}
+    	System.out.println("___________End facts___________");
+    }
    
 }
+
+
+
+
+
+
+
