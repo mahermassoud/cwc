@@ -5,4 +5,7 @@ public interface Common {
 		EPIDERMAL, MYOCYTE_ENHANCER, CALMODULIN_1
 	}
 
+	public static enum PathwayType {
+		ANGIOTENSIN
+	}
 }
