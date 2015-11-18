@@ -77,14 +77,11 @@ rule "Pathway: Angiotensin II mediated activation of JNK Pathway via Pyk2 depend
 	agenda-group "Pathway discovery" 
 	no-loop true
 	when
-		epidermalGrowthFactorGeneInput : GeneListInputAgent();
-		myocyteEnhancer2CGeneInput : GeneListInputAgent();
-		calmodulin1GeneInput : GeneListInputAgent();
-			
-		eval( 	inputIsRelevant(epidermalGrowthFactorGeneInput, GeneListInputAgent.GENE_EPIDERMAL_GROWTH_FACTOR_RECEPTOR) &&
-				inputIsRelevant(myocyteEnhancer2CGeneInput, GeneListInputAgent.GENE_MYOCYTE_ENHANCER_2C) &&
-				inputIsRelevant(calmodulin1GeneInput, GeneListInputAgent.GENE_CALMODULIN_1))
+		epidermalGrowthFactor : GeneGroup(type == GeneGroupType.EPIDERMAL);
+		myocyteEnhancer: GeneGroup(type == GeneGroupType.MYOCYTE_ENHANCER);
+		calmodulin1 : GeneGroup(type == GeneGroupType.CALMODULIN_1);
+
 	then
-		System.out.println("!!!!!! Inputs " + epidermalGrowthFactorGeneInput.getFileName() + ", " + myocyteEnhancer2CGeneInput.getFileName() + ", " +
-		calmodulin1GeneInput.getFileName() + "is relevant to Angiotensin activation of JNK via Pyk2 pathway!!!!!!");
+		System.out.println("!!!!!! GeneGroup 's " + epidermalGrowthFactor.toString() + ", " + myocyteEnhancer.toString() + ", " +
+		calmodulin1.toString() + "is relevant to Angiotensin activation of JNK via Pyk2 pathway!!!!!!");
 end

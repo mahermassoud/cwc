@@ -39,8 +39,8 @@ public class DroolsTest implements Common {
         	kSession.insert(epidermal_input);
         	System.out.println("___________________________Firing rules with epidermal___________________________");
             kSession.fireAllRules();
-            kSession.fireAllRules();
-            kSession.fireAllRules();
+            
+            printAllFacts(kSession);
 
         	kSession.insert(myocyte_input);
         	System.out.println("************************************************************************************************************************************");
@@ -49,6 +49,7 @@ public class DroolsTest implements Common {
         	geneCollectionAgenda.setFocus();
             kSession.fireAllRules();
             kSession.fireAllRules();
+        	geneCollectionAgenda.setFocus();
 
         	kSession.insert(calmodulin_input);
         	System.out.println("************************************************************************************************************************************");
@@ -60,6 +61,7 @@ public class DroolsTest implements Common {
         	pathwayDiscoveryAgenda.setFocus();
 
             kSession.fireAllRules();
+            printAllFacts(kSession);
             
         } 
         catch (Throwable t) {

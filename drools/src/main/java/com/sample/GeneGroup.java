@@ -12,7 +12,7 @@ public class GeneGroup implements Common {
 	public HashSet<GeneGroupType> relevantGenes = new HashSet<GeneGroupType>();
 	
 	// Type of gene group this object represents
-	GeneGroupType type;
+	public GeneGroupType type;
 	
 	/*
 	 * Creates a gene Group of a certain type
@@ -42,6 +42,13 @@ public class GeneGroup implements Common {
 		}
 		
 		return output;
-		
+	}
+	
+	/**
+	 * 
+	 * @return type of this geneGroup
+	 */
+	public GeneGroupType getType() {
+		return type;
 	}
 }
