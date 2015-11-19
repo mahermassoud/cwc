@@ -67,6 +67,7 @@ public class DroolsTest implements Common {
         	System.out.println("___________________________Testing logical retraction, epidermal and angiotensin should be gone___________________________");
         	FactHandle epidermalFactHandle = kSession.getFactHandle(epidermal_input);
         	kSession.delete(epidermalFactHandle);
+        	pathwayDiscoveryAgenda.setFocus();
             kSession.fireAllRules();
         	
             kSession.fireAllRules();
