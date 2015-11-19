@@ -8,6 +8,7 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.rule.Agenda;
 import org.kie.api.runtime.rule.AgendaGroup;
+import org.kie.api.runtime.rule.FactHandle;
 
 /**
  * This class is to demonstrate the launching of rules based on some input and interfacing with agents.
@@ -60,6 +61,14 @@ public class DroolsTest implements Common {
         	AgendaGroup pathwayDiscoveryAgenda = agenda.getAgendaGroup("Pathway discovery");
         	pathwayDiscoveryAgenda.setFocus();
 
+            kSession.fireAllRules();
+            printAllFacts(kSession);
+            
+        	System.out.println("___________________________Testing logical retraction, epidermal and angiotensin should be gone___________________________");
+        	FactHandle epidermalFactHandle = kSession.getFactHandle(epidermal_input);
+        	kSession.delete(epidermalFactHandle);
+            kSession.fireAllRules();
+        	
             kSession.fireAllRules();
             printAllFacts(kSession);
             

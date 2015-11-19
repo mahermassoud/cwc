@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import com.sample.GeneListInputAgent;
 import com.sample.Common.GeneGroupType;
+import com.sample.Common.PathwayType;
+import com.sample.Common;
 import com.sample.GeneGroup;
+import com.sample.Pathway;
 
 /**
 * Determines if a input list of Genes is relevant to another gene set. Uses threshold of .7 matching. Prints out each match
@@ -37,6 +40,28 @@ function boolean inputIsRelevant(GeneListInputAgent input, List desired) {
 		return false;
 	}
 }
+
+/**
+* Determines if a gene input is relevant and returns the gene group it is relevant to.
+* If no group is relevant, returns null
+*
+* @param input Input being checked
+*/
+/*function GeneGroupType getRelevantGroup(GeneListInputAgent input) {
+	
+	GeneList relevantList = null;
+	GeneGroupType output = null;
+	
+	// for each gene list
+	for( List<String> geneList : ALL_GENE_LISTS) {
+		if(inputIsRelevant(input, geneList) {
+			relevantList = geneList;
+			break;
+		}
+	}
+	
+	return output;
+}*/
 
 rule "genes_epidermal_growth_factor_receptor"
 	agenda-group "Gene collection"
@@ -84,4 +109,5 @@ rule "Pathway: Angiotensin II mediated activation of JNK Pathway via Pyk2 depend
 	then
 		System.out.println("!!!!!! GeneGroup 's " + epidermalGrowthFactor.toString() + ", " + myocyteEnhancer.toString() + ", " +
 		calmodulin1.toString() + "is relevant to Angiotensin activation of JNK via Pyk2 pathway!!!!!!");
+		insertLogical(new Pathway(PathwayType.ANGIOTENSIN));
 end

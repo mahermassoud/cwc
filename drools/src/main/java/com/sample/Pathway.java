@@ -28,6 +28,12 @@ public class Pathway {
 	public String toString() {
 		String output = null;
 		
+		switch (type) {
+			case ANGIOTENSIN:
+			output = "angiotensin";
+			break;
+		}
+		
 		return output;
 	}
 	
