@@ -1,24 +1,17 @@
 package com.sample;
 
-import java.util.HashSet;
-
 /**
  * Class that represents a group of relevant genes-- for prototyping purposes
  * 
  * @author Massoud Maher
  */
-public class GeneGroup implements Common {
+public class GeneGroup<GeneGroupType> extends DataContainer<Enum> implements Common {
 
-	public HashSet<GeneGroupType> relevantGenes = new HashSet<GeneGroupType>();
-	
-	// Type of gene group this object represents
-	public GeneGroupType type;
-	
 	/*
 	 * Creates a gene Group of a certain type
 	 */
 	public GeneGroup(GeneGroupType type) {
-		this.type = type;
+		super(type);
 	}
 
 	/**
@@ -27,7 +20,7 @@ public class GeneGroup implements Common {
 	public String toString() {
 		String output = null;
 		
-		switch(type) {
+		switch((GeneGroupType)getData()) {
 			case EPIDERMAL:
 			output = "epidermal";
 			break;
@@ -42,13 +35,5 @@ public class GeneGroup implements Common {
 		}
 		
 		return output;
-	}
-	
-	/**
-	 * 
-	 * @return type of this geneGroup
-	 */
-	public GeneGroupType getType() {
-		return type;
 	}
 }

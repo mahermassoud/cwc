@@ -1,7 +1,6 @@
 package com.sample;
 
 import java.util.Collection;
-import java.util.HashSet;
 
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
@@ -19,7 +18,7 @@ import org.kie.api.runtime.rule.FactHandle;
 public class DroolsTest implements Common {
 	
     public static final void main(String[] args) {
-
+    	
     	try {
             // load up the knowledge base
 	        KieServices ks = KieServices.Factory.get();
@@ -58,6 +57,7 @@ public class DroolsTest implements Common {
             kSession.fireAllRules();
             
             // Now that all input is added, focus agenda on finding relevant pathways
+        	System.out.println("___________________________Firing rules pathway discovery focus________________________________________");
         	AgendaGroup pathwayDiscoveryAgenda = agenda.getAgendaGroup("Pathway discovery");
         	pathwayDiscoveryAgenda.setFocus();
 

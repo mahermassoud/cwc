@@ -1,25 +1,14 @@
 package com.sample;
 
-import com.sample.Common.PathwayType;
-import java.util.HashSet;
-
 /**
  * Class that represents a group of relevant genes-- for prototyping purposes
  * 
  * @author Massoud Maher
  */
-public class Pathway {
-
-	public HashSet<PathwayType> relevantPathways = new HashSet<PathwayType>();
+public class Pathway extends DataContainer<Enum> {
 	
-	// Type of gene group this object represents
-	public PathwayType type;
-	
-	/*
-	 * Creates a gene Group of a certain type
-	 */
-	public Pathway(PathwayType type) {
-		this.type = type;
+	public Pathway(PathwayType path) {
+		super(path);
 	}
 
 	/**
@@ -28,7 +17,7 @@ public class Pathway {
 	public String toString() {
 		String output = null;
 		
-		switch (type) {
+		switch ( (PathwayType)getData() ) {
 			case ANGIOTENSIN:
 			output = "angiotensin";
 			break;
@@ -37,11 +26,4 @@ public class Pathway {
 		return output;
 	}
 	
-	/**
-	 * 
-	 * @return type of this geneGroup
-	 */
-	public PathwayType getType() {
-		return type;
-	}
 }

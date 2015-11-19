@@ -3,6 +3,9 @@ package com.sample;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * This class contains enums and Lists used to match inputs to relevant genes and pathways
+ */
 public interface Common {
 	public static enum GeneGroupType {
 		EPIDERMAL, MYOCYTE_ENHANCER, CALMODULIN_1
